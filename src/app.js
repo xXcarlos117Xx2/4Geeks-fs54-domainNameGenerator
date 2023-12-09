@@ -2,25 +2,27 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
-
-window.onload = function() {
+window.onload = function () {
+  
+  //Datos
   const words = {
-    pronoun: ["the", "our"],
-    adj: ["great", "big"],
-    noun: ["jogger", "racoon"]
+    pronoun: ['the', 'our'],
+    adj: ['great', 'big'],
+    noun: ['jogger', 'racoon'],
+    ext: ['.es', '.com', '.net']
   };
-  let result = "";
-  for (let i = 0; i < Object.keys(words).length; i++) {
-    result +=
-      words[Object.keys(words)[i]][
-        Math.floor(Math.random() * words[Object.keys(words)[i]].length)
-      ];
-    // if (i < Object.keys(words).length - 1) {
-    //   result += " ";
-    // }
-  }
 
-  document.getElementById("domain").innerHTML = result;
+  //Borrado de "loading"
+  document.getElementById("domain").innerHTML = '';
+
+  //Loop para recorrer arrays
+  words.pronoun.forEach(var1 => {
+    words.adj.forEach(var2 => {
+      words.noun.forEach(var3 => {
+        words.ext.forEach(var4 => {
+          document.getElementById("domain").innerHTML += '<li class="list-group-item col-4">'+var1+var2+var3+var4+'</li>';
+        })
+      })
+    })
+  })
 };
